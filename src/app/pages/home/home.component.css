@@ -1,0 +1,10 @@
+#price-big-button {
+    width: 300px;
+    height: 150px;
+    background-color: lightcoral;
+    font-size: large;
+}
+
+#text-left-button {
+    padding-top: 2%;
+}
