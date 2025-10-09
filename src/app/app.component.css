@@ -1,0 +1,14 @@
+.navbar {
+background-color: #d633ff;
+}
+
+#navbar-my-main .nav-link {
+    font-size: clamp(0.9rem, 2vw, 1.8rem);
+    color: white !important;
+}
+#page-content {
+  min-height: calc(100vh - 70px);
+  background: linear-gradient(180deg, #ffffe6 0%, #99ffff 100%);
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
