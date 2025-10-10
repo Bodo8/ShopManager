@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ShopService } from '../../services/shop.service';
 import { ProductService } from '../../services/product.service';
 import { FormsModule } from '@angular/forms';
+import { DiscountDto } from '../../models/discount.dto';
 
 @Component({
   selector: 'app-price-management',
@@ -20,6 +21,7 @@ export class PriceManagementComponent {
   products = signal<any[]>([]);
   finalPrices = signal<{ [key: number]: number }>({});
   selectedShopId = 0;
+  selectedDiscounts: { [productId: number]: number | null } = {};
 
   
   loadProducts() {
@@ -27,15 +29,24 @@ export class PriceManagementComponent {
     this.productService.getProductsByShop(this.selectedShopId).subscribe((p) => this.products.set(p));
   }
 
- toggleDiscount(productId: number, discount: any, event: Event) {
+  selectSingleDiscount(productId: number, discount: DiscountDto) {
+
+  if (this.selectedDiscounts[productId] === discount.id) {
+    this.selectedDiscounts[productId] = null;
+  } else {
+    this.selectedDiscounts[productId] = discount.id;
+  }
+  this.setDiscount(productId, discount)
+}
+
+ setDiscount(productId: number, discount: DiscountDto) {
   const product = this.products().find(p => p.id === productId);
   if (!product) return;
 
   const basePrice = product.prices[0]?.basePrice ?? 0;
-  const checked = (event.target as HTMLInputElement).checked;
 
-  // Jeśli zaznaczony → nalicz rabat
-  if (checked) {
+  
+  if (this.selectedDiscounts[productId] !== null) {
     const discounted = basePrice * (1 - discount.percentage / 100);
     this.finalPrices.update(fp => ({ ...fp, [productId]: discounted }));
   } else {

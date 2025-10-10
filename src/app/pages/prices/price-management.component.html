@@ -47,8 +47,9 @@
             <input
               class="form-check-input"
               type="checkbox"
+              [checked]="selectedDiscounts[product.id] === discount.id"
               [id]="'discount-' + product.id + '-' + discount.id"
-              (change)="toggleDiscount(product.id, discount, $event)"
+              (change)="selectSingleDiscount(product.id, discount)"
             />
             <label
               class="form-check-label"
