@@ -1,7 +1,9 @@
+
 export interface DiscountDto {
   id: number;
   description: string;
+  expirationDate: Date;
   percentage: number;
-  productId: number;
-  shopId: number;
+  productIds: number[];
+  shopIds: number[];
 }
