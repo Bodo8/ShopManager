@@ -49,10 +49,12 @@ width: 20vw;
     padding-left: 3%;
 }
 
-#body-background {
-    width: 100%;
-  border-collapse: collapse;
-    background-color: rgb(240, 240, 203);
+.btn {
+  color: white;
 }
 
 
+.btn:hover {
+  filter: brightness(80%);
+  color: black;
+}

@@ -6,6 +6,7 @@ import { ProductDto } from '../models/product.dto';
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {
+  
   private http = inject(HttpClient);
   private baseUrl = environment.baseUrl;
 
