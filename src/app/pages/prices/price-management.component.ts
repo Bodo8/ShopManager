@@ -30,7 +30,7 @@ export class PriceManagementComponent {
   }
 
   selectSingleDiscount(productId: number, discount: DiscountDto) {
-
+    
   if (this.selectedDiscounts[productId] === discount.id) {
     this.selectedDiscounts[productId] = null;
   } else {

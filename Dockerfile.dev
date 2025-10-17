@@ -1,0 +1,17 @@
+# ===== Etap dev =====
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Kopiujemy package.json i package-lock.json, żeby cache'ować npm install
+COPY package*.json ./
+RUN npm install
+
+# Kopiujemy resztę kodu
+COPY . .
+
+# Otwieramy port dev Angulara (domyślnie 4200)
+EXPOSE 4200
+
+# Uruchamiamy Angulara w trybie watch / hot reload
+CMD ["npm", "run", "start", "--", "--host", "0.0.0.0"]
