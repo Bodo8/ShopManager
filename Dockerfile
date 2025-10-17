@@ -14,8 +14,8 @@ RUN npm run build --prod
 # ===== Etap serwowania =====
 FROM nginx:alpine
 
-# Kopiujemy pliki statyczne z katalogu dist (Angular)
-COPY --from=build /app/dist/ZarzadzanieCenami/ /usr/share/nginx/html
+# Kopiujemy pliki statyczne z katalogu dist (Angular) w pliku angular.json "outputPath"
+COPY --from=build /app/dist/zarzadzanie-cenami/ /usr/share/nginx/html
 
 # Ustawiamy port, na którym kontener będzie nasłuchiwał
 EXPOSE 80
