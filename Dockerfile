@@ -16,6 +16,7 @@ FROM nginx:alpine
 
 # Kopiujemy pliki statyczne z katalogu dist (Angular) w pliku angular.json "outputPath"
 COPY --from=build /app/dist/zarzadzanie-cenami/ /usr/share/nginx/html
+COPY default.conf /etc/nginx/conf.d/default.conf
 
 # Ustawiamy port, na którym kontener będzie nasłuchiwał
 EXPOSE 80
