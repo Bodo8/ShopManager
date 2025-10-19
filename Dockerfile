@@ -11,11 +11,7 @@ COPY . .
 # Budujemy frontend w trybie produkcyjnym
 RUN npm run build --prod
 
-# Kopiujemy pliki statyczne z katalogu dist (Angular) w pliku angular.json "outputPath"
-COPY --from=build /app/dist/zarzadzanie-cenami/ /usr/share/nginx/html
-COPY default.conf /etc/nginx/conf.d/default.conf
-
-# Ustawiamy port, na którym kontener będzie nasłuchiwał
-EXPOSE 80
-
-CMD ["-g", "daemon off;"]
+# Etap do "przechowywania" statycznych plików
+FROM busybox AS frontend-files
+WORKDIR /usr/share/frontend
+COPY --from=build /app/dist/zarzadzanie-cenami .
