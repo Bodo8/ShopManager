@@ -30,19 +30,19 @@ services:
 
   shop-manager:
     image: ghcr.io/bodo8/frontend:latest
-    volumes:
-      - app-client-build:/app/dist/zarzadzanie-cenami
     container_name: shop-manager-app
     restart: unless-stopped
     env_file:
       - /home/admin/appfiles/frontend/frontend.env
+    volumes:
+      - app-client-build:/app/dist/zarzadzanie-cenami
     expose:
       - "80"
     networks:
       - shop-network
 
   nginx:
-    image: nginx:1.27-alpine
+    image: nginx:alpine
     container_name: nginx-proxy
     restart: unless-stopped
     ports:
@@ -64,6 +64,7 @@ services:
       retries: 3
 
 volumes:
+  app-client-build:
   nginx-logs:
 
 networks:
