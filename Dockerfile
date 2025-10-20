@@ -16,19 +16,19 @@ COPY . .
 RUN npm run build --prod
 
 # Etap 2: Serwowanie aplikacji przez Nginx (wewnętrzny)
-FROM nginx:1.27-alpine
+# FROM nginx:1.27-alpine
 
 # Usunięcie domyślnej konfiguracji Nginx
-RUN rm /etc/nginx/conf.d/default.conf
+# RUN rm /etc/nginx/conf.d/default.conf
 
 # Kopiowanie prostej konfiguracji dla wewnętrznego Nginx
-COPY nginx/internal.conf /etc/nginx/conf.d/default.conf
+# COPY nginx/internal.conf /etc/nginx/conf.d/default.conf
 
 # Kopiowanie zbudowanej aplikacji z etapu build
-COPY --from=build /app/dist/zarzadzanie-cenami/ /usr/share/nginx/html
+# COPY --from=build /app/dist/zarzadzanie-cenami/ /usr/share/nginx/html
 
 # Eksponowanie portu 80 (wewnątrz sieci Docker)
-EXPOSE 80
+# EXPOSE 80
 
 # Uruchomienie Nginx
-CMD ["nginx", "-g", "daemon off;"]
+# CMD ["nginx", "-g", "daemon off;"]
