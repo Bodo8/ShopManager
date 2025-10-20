@@ -21,8 +21,8 @@ jobs:
 
       - name: Build and push image
         run: |
-          docker build -t ghcr.io/bodo8/shop-manager:latest .
-          docker push ghcr.io/bodo8/shop-manager:latest
+          docker build -t ghcr.io/bodo8/frontend:latest .
+          docker push ghcr.io/bodo8/frontend:latest
       - name: SSH to VPS and redeploy
         uses: appleboy/ssh-action@v1.1.0
         with:
@@ -31,5 +31,5 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
             cd /home/admin/shop_manager
-            docker compose pull shop-manager
-            docker compose up -d shop-manager
+            docker compose pull frontend
+            docker compose up -d frontend
