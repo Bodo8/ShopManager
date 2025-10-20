@@ -7,13 +7,13 @@ WORKDIR /app
 COPY package*.json ./
 
 # Instalacja zależności
-RUN npm ci
+RUN npm install
 
 # Kopiowanie reszty plików projektu
 COPY . .
 
 # Build aplikacji Angular w trybie produkcyjnym
-RUN npm run build -- --configuration production
+RUN npm run build --prod
 
 # Etap 2: Serwowanie aplikacji przez Nginx (wewnętrzny)
 FROM nginx:alpine
