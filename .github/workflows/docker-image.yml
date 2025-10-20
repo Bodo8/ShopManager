@@ -32,4 +32,4 @@ jobs:
           script: |
             cd /home/admin/shop_manager
             docker compose pull frontend
-            docker compose up -d frontend
+            docker compose up -d shop-manager
