@@ -16,7 +16,7 @@ COPY . .
 RUN npm run build --prod
 
 # Etap 2: Serwowanie aplikacji przez Nginx (wewnętrzny)
-FROM nginx:alpine
+FROM nginx:1.27-alpine
 
 # Usunięcie domyślnej konfiguracji Nginx
 RUN rm /etc/nginx/conf.d/default.conf
