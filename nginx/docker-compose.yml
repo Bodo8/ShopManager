@@ -13,7 +13,7 @@ services:
       - shop-network
 
   shop-api:
-    image: ghcr.io/bodo8/api:latest
+    image: ghcr.io/bodo8/shop-api:latest
     container_name: shop-api-app
     restart: unless-stopped
     env_file:
@@ -29,9 +29,9 @@ services:
       - shop-network
 
   shop-manager:
-    image: ghcr.io/bodo8/frontend:latest
+    image: ghcr.io/bodo8/shop-manager:latest
     container_name: shop-manager-app
-    restart: unless-stopped
+    restart: "no"
     env_file:
       - /home/admin/appfiles/frontend/frontend.env
     volumes:
@@ -50,7 +50,7 @@ services:
     volumes:
     #  - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
       - /home/admin/docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
-      - app-client-build:/usr/share/nginx/html
+      - app-client-build:/usr/share/nginx/html:ro
       - nginx-logs:/var/log/nginx
     depends_on:
       - shop-manager
