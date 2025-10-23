@@ -31,5 +31,7 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
             cd /home/admin/shop_manager
+            docker-compose stop shop-manager
+            docker volume rm shop_manager_app-client-build
             docker compose pull shop-manager
             docker compose up -d shop-manager
