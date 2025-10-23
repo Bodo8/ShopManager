@@ -1,14 +1,50 @@
 .navbar {
-background-color: #d633ff;
+background-image: url('/assets/pasek_shop_manag.png');
+ background-size: cover;        /* dopasuj tło */
+  background-repeat: no-repeat;  /* nie powtarzaj */
+  height: 80px;                  /* przykładowa wysokość */
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
 }
 
 #navbar-my-main .nav-link {
     font-size: clamp(0.9rem, 2vw, 1.8rem);
-    color: white !important;
+    color: white !important; 
 }
+
 #page-content {
   min-height: calc(100vh - 70px);
-  background: linear-gradient(180deg, #ffffe6 0%, #99ffff 100%);
-  padding-top: 2rem;
   padding-bottom: 2rem;
+ 
+}
+
+.background-image {
+  position: relative;
+  min-height: 100vh; /* pełna wysokość ekranu */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* żeby pseudo-element nie wychodził poza kontener */
+  z-index: 0;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+
+.background-image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/assets/center-galery.jpg');
+  opacity: 0.3; 
+  z-index: -1; /* tło za zawartością */
+}
+
+.navbar-title {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 5px 10px;
+  border-radius: 6px;
+  color: white;
 }
